@@ -1,21 +1,16 @@
-import React from "react";
+import React, { useContext, useState } from "react";
+import { UserContext } from "../Context/UserContext";
+import LogInForm from "../Components/LogInForm";
+import { Link } from "react-router-dom";
 
 function LogIn() {
-
     return (
-        <React.Fragment>
+        <section>
             <h1>LOG IN</h1>
-            <form>
-                <label>
-                    UserName:
-                    <input type="text" />
-                </label>
-                <label>
-                    Password:
-                    <input type="text" />
-                </label>
-            </form>            
-        </React.Fragment>
+            <LogInForm />
+            <p>or</p>
+            <p><Link to={'/createaccount'}>Create New Account</Link></p>
+        </section>
     )
 }
 
