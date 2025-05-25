@@ -1,6 +1,6 @@
 import React, { useContext, useState } from "react";
 import { UserContext } from "../Context/UserContext";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 function LogInForm() {
     const { users, authenticated, login} = useContext(UserContext);
@@ -41,6 +41,7 @@ function LogInForm() {
                     Password:
                     <input type="text" onChange={(e) => setPassword(e.target.value)} />
                 </label>
+                <p><Link to={'/passwordreset'}>Forgot Password?</Link></p>
                 <button type="submit">Log In</button>
             </form>            
         </React.Fragment>

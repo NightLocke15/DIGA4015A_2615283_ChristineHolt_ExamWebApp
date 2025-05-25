@@ -76,7 +76,9 @@ function CreateAccountForm() {
                 [...users, {username: userName, email: emailAddress, password: passWord}]
             )
             create(true, userName);
+            console.log(users);
             navigate('/')
+             console.log(users);
         }        
     }
 

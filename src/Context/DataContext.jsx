@@ -10,10 +10,13 @@ function DataProvider({ children }) {
     const [ruleIndexTwo, setRuleIndexTwo] = useState("");
     const [currentData, setCurrentData] = useState(null);
     const [mainSectionData, setMainSectionData] = useState(null);
-    const [subSectionData, setSubSectionData] = useState([{}]);
+    const [subSectionData, setSubSectionData] = useState([]);
     const [otherRuleSection, setOtherRuleSection] = useState(null);
-    const [otherRules, setOtherRules] = useState([{}]);
+    const [otherRules, setOtherRules] = useState([]);
     const [otherRuleIndexOne, setOtherRuleIndexOne] = useState("");
+    const [information, setInformation] = useState([]);
+    const [infoIndexOne, setInfoIndexOne] = useState("");
+    const [infoIndexTwo, setInfoIndexTwo] = useState("");
 
     //For main set of rules
     useEffect(() => {
@@ -77,7 +80,7 @@ function DataProvider({ children }) {
 
     //For written out other rules
     useEffect(() => {
-        setOtherRules([{}]);
+        setOtherRules([]);
         if (otherRuleSection != null) {
             for (let i = 0; i < otherRuleSection.count; i++) {
                 fetch(`https://www.dnd5eapi.co/api/2014/${otherRuleIndexOne}/${otherRuleSection.results[i].index}`)
@@ -97,9 +100,26 @@ function DataProvider({ children }) {
         }
     }, [otherRuleSection]);
 
+    //for information in character creation ond viewing
+    useEffect(() => {
+        fetch(`https://www.dnd5eapi.co/api/2014/${infoIndexOne}${infoIndexTwo}`)
+            .then(response => {
+                if (!response.ok) {
+                    throw Error("Data could not be fetched.");
+                }
+                return response.json();
+            })
+            .then(data => {
+                setInformation(data);
+                console.log(data);
+            })
+            .catch(error => {
+                console.log(error.message);
+            })
+    }, [infoIndexTwo])
 
     return (
-        <DataContext.Provider value={{ mainSectionData, subSectionData, setRuleIndexOne, setRuleIndexTwo, setOtherRuleIndexOne, otherRules }}>
+        <DataContext.Provider value={{ mainSectionData, subSectionData, setRuleIndexOne, setRuleIndexTwo, setOtherRuleIndexOne, otherRules, setInfoIndexOne, setInfoIndexTwo, information }}>
             {children}
         </DataContext.Provider>
     )    

@@ -24,10 +24,11 @@ function UserProvider({children}) {
                 setAuthenticated(true);
                 setCurrentUser(username);
                 console.log("User has logged in");
+                console.log(users);
                 return true;
             }
             else {
-                return false;
+                
             }
         }        
     }
