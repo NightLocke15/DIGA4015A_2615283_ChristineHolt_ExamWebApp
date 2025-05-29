@@ -17,6 +17,8 @@ function DataProvider({ children }) {
     const [information, setInformation] = useState([]);
     const [infoIndexOne, setInfoIndexOne] = useState("");
     const [infoIndexTwo, setInfoIndexTwo] = useState("");
+    const [infoURL, setInfoURL] = useState("");
+    const [description, setDescription] = useState([]);
 
     //For main set of rules
     useEffect(() => {
@@ -118,8 +120,28 @@ function DataProvider({ children }) {
             })
     }, [infoIndexTwo])
 
+    useEffect(() => {
+        if (infoURL !== "") {
+            fetch(`https://www.dnd5eapi.co${infoURL}`)
+            .then(response => {
+                if (!response.ok) {
+                    throw Error("Data could not be fetched.");
+                }
+                return response.json();
+            })
+            .then(data => {
+                setDescription(data);
+                console.log(data);
+            })
+            .catch(error => {
+                console.log(error.message);
+            })
+        }        
+    }, [infoURL])
+
     return (
-        <DataContext.Provider value={{ mainSectionData, subSectionData, setRuleIndexOne, setRuleIndexTwo, setOtherRuleIndexOne, otherRules, setInfoIndexOne, setInfoIndexTwo, information }}>
+        <DataContext.Provider value={{ mainSectionData, subSectionData, setRuleIndexOne, setRuleIndexTwo, 
+        setOtherRuleIndexOne, otherRules, setInfoIndexOne, setInfoIndexTwo, information, description, setInfoURL }}>
             {children}
         </DataContext.Provider>
     )    

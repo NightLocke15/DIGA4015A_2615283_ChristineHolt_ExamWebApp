@@ -6,13 +6,13 @@ export const CharacterContext = createContext();
 function CharacterProvider({ children }) {
     const [allCharacters, setAllCharacters] = useState([]);
     const [currentUserCharacters, setCurrentUserCharacters] = useState([]);
-    const [currentCharacter, setCurrentCharacter] = useState({});
+    const [currentCharacter, setCurrentCharacter] = useState();
     const [creator, setCreator] = useState("");
 
     const { currentUser } = useContext(UserContext);
 
     return (
-        <CharacterContext.Provider value={{ creator, setCreator, setCurrentCharacter }}>
+        <CharacterContext.Provider value={{ creator, setCreator, setCurrentCharacter, currentCharacter }}>
             {children}
         </CharacterContext.Provider>
     )
