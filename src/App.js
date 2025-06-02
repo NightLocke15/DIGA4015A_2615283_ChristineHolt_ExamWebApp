@@ -15,33 +15,38 @@ import DataProvider from './Context/DataContext';
 import CharacterSheet from './Pages/CharacterSheet';
 import CharacterProvider from './Context/CharacterContext';
 import ForgotPassword from './Pages/ForgotPassword';
+import ThemeProvider from './Context/ThemeContext';
+import Settings from './Pages/Settings';
 
 function App() {
   
 
   return (
     <div className="App">
-      <UserProvider>
-        <DataProvider>
-          <CharacterProvider>
-            <BrowserRouter>
-              <NavBar />                             
-              <Routes>
-                <Route path='/' element={<Home />} />
-                <Route path='/create' element={<CreateCharacter />} />
-                <Route path='/list' element={<CharacterList />} />
-                <Route path='/sheet' element={<CharacterSheet />} />
-                <Route path='/rules' element={<Rules />} />
-                <Route path='/about' element={<About />} />
-                <Route path='/login' element={<LogIn />} />
-                <Route path='/createaccount' element={<CreateProfile />} />
-                <Route path='/passwordreset' element={<ForgotPassword />} />
-                <Route path='*' element={<Home />} />
-              </Routes>
-            </BrowserRouter>
-          </CharacterProvider>
-        </DataProvider>
-      </UserProvider>
+      <BrowserRouter>
+        <UserProvider>
+          <DataProvider>
+            <CharacterProvider>
+              <ThemeProvider>
+                <NavBar />                             
+                <Routes>
+                  <Route path='/' element={<Home />} />
+                  <Route path='/create' element={<CreateCharacter />} />
+                  <Route path='/list' element={<CharacterList />} />
+                  <Route path='/sheet' element={<CharacterSheet />} />
+                  <Route path='/rules' element={<Rules />} />
+                  <Route path='/about' element={<About />} />
+                  <Route path='/login' element={<LogIn />} />
+                  <Route path='/createaccount' element={<CreateProfile />} />
+                  <Route path='/passwordreset' element={<ForgotPassword />} />
+                  <Route path='/settings' element={<Settings />} />
+                  <Route path='*' element={<Home />} />
+                </Routes>
+              </ThemeProvider>
+            </CharacterProvider>
+          </DataProvider>
+        </UserProvider>
+      </BrowserRouter>
     </div>
   );
 }

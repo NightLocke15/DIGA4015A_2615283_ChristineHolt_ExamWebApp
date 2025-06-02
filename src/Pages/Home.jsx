@@ -16,7 +16,7 @@ function Home() {
             {authenticated ? 
             (
             <React.Fragment>
-                <h1 className="heading">WELCOME, {currentUser}</h1>
+                <h1 className="heading">WELCOME, {currentUser && currentUser}</h1>
                 <section className="card-container">                   
                     <Link to={'/list'} className="card-holder"><article className="card">
                         <h3>Character List</h3>

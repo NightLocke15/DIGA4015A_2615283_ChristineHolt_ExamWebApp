@@ -1,5 +1,5 @@
 import React from "react";
-import ChangePassword from "../Components/ChangePassword";
+import ChangePassword from "../Components/Settings/ChangePassword";
 
 function ForgotPassword() {
 

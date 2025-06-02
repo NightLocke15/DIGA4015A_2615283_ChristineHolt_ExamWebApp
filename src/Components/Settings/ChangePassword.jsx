@@ -1,36 +1,26 @@
 import React, { useContext, useState } from "react";
-import { UserContext } from "../Context/UserContext";
+import { UserContext } from "../../Context/UserContext";
 import { useNavigate } from "react-router-dom";
 
-function ChangePassword() {
-    const { users, setUsers } = useContext(UserContext);
+function ChangePassword(props) {
+    const { passwordChange } = useContext(UserContext);
     const [username, setUsername] = useState("");
     const [email, setEmail] = useState("");
     const [newPassword, setNewPassword] = useState("");
-    const navigate = useNavigate();
+    const { place } = props;
 
-    function passwordChange(e) {
+    function changePassword(e) {
         e.preventDefault();
-        if (users.some((user) => (user.username === username && user.email === email))) {
-            const newUserInfo = users.map((user) => {
-                if (user.username === username && user.email === email) {
-                    return {
-                        ...user,
-                        password: newPassword,
-                    };
-                } 
-                else {
-                    return user;
-                }
-            });
-            setUsers(newUserInfo);
-            console.log(users);
-            navigate('/login');
+        if (place === "settings") {
+            passwordChange(e, "settings", username, email, newPassword)
+        }
+        else {
+            passwordChange(e, "login", username, email, newPassword)
         }
     }
 
     return (
-        <form onSubmit={passwordChange}>
+        <form onSubmit={(e) => changePassword(e)}>
             <label> Username:
                 <input type="text"
                 placeholder="Enter Username..."
