@@ -1,6 +1,7 @@
 import React, { useContext } from "react";
 import { UserContext } from "../Context/UserContext";
 import { Link, Navigate, useNavigate } from "react-router-dom";
+import '../Styles/Home.css';
 
 function Home() {
     const { authenticated, currentUser, logout } = useContext(UserContext)
@@ -13,28 +14,36 @@ function Home() {
     return(
         <React.Fragment>
             {authenticated ? 
-            (<section>
-                <h1>WELCOME</h1>   
-                <Link to={'/list'}><article>
-                    <h3>Character List</h3>
-                </article></Link>
-                <Link to={'/create'}><article>
-                    <h3>Create a Character</h3>
-                </article></Link>
-                <Link to={'/rules'}><article>
-                    <h3>Rules</h3>
-                </article></Link>
-                <button onClick={logout}>log out</button>          
-            </section>) 
+            (
+            <React.Fragment>
+                <h1 className="heading">WELCOME, {currentUser}</h1>
+                <section className="card-container">                   
+                    <Link to={'/list'} className="card-holder"><article className="card">
+                        <h3>Character List</h3>
+                    </article></Link>
+                    <Link to={'/create'} className="card-holder"><article className="card">
+                        <h3>Create a Character</h3>
+                    </article></Link>
+                    <Link to={'/rules'} className="card-holder"><article className="card">
+                        <h3>Rules</h3>
+                    </article></Link>
+                        <button onClick={logout}>log out</button>
+                </section>
+            </React.Fragment>) 
             : 
             (<section>
-                <h1>WELCOME TO THE CHARACTER COLLECTION</h1>
-                <button onClick={navToLogIn}>Log In</button>
+                <p className="heading-1">WELCOME</p>
+                <p className="heading-2">TO THE</p>
+                <h1 className="heading-main">CHARACTER COLLECTION</h1>
+                <p className="app-description">Where you can create and store your Dungeons and Dragons characters!</p>
+                <button className="login-button" onClick={navToLogIn}>Log In</button>
                 <p>or</p>
-                <p><Link to={'/createaccount'}>Create an Account</Link></p>
+                <p className="create-account"><Link to={'/createaccount'}>Create an Account</Link></p>
             </section>)}
         </React.Fragment>
     )
 }
 
 export default Home;
+
+///*<button onClick={logout}>log out</button> */ 

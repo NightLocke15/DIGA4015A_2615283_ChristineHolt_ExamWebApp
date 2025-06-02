@@ -1,0 +1,83 @@
+nav {
+    background-color: #363535 ;
+    display: flex;
+    box-shadow: 0 8px 5px -5px #1f1e1e;
+    position: fixed;
+    top: 0;
+    width: 100%;
+}
+
+.logo {
+    text-align: left;
+    flex: 2;
+    font-family: "Koulen", sans-serif;
+    align-items: baseline;
+}
+
+.logo-1 {
+    flex: 2%;
+    margin: 0;
+    margin-left: 5px;
+    text-decoration: none; 
+    align-items: baseline;   
+}
+
+.logo-2 {
+    flex: 98%;
+    margin: 0;
+    font-size: x-large;
+    margin-left: 5px;
+    text-decoration: none;
+    align-items: baseline;
+}
+
+.links {
+    flex: 1;
+    font-family: "Koulen", sans-serif;
+    display: flex;
+}
+
+.link {
+    text-decoration: none;
+    color: white;
+    margin: 0;
+    flex: 20%;
+    display: inline-block;
+}
+
+.link p {
+    margin: 0;
+    margin-top: 5px;
+    margin-left: 2px;
+    margin-right: 2px;
+}
+
+.profile {
+    flex: 2;
+    text-align: right;  
+    font-family: "Sunflower", sans-serif;  
+}
+
+.profile img {
+    display: inline-block;
+    margin: 0;
+    margin-top: 10px;
+    margin-right: 10px;
+}
+
+.profile p {
+    display: inline-block;    
+    margin: 0;
+    margin-top: 5px;
+    margin-right: 10px;
+}
+
+#thisLocation {    
+    border: 2px solid #930D0D;
+    border-radius: 10px;
+}
+
+#notThisLocation:hover {
+    border: 2px solid #930D0D;
+    border-radius: 10px;
+}

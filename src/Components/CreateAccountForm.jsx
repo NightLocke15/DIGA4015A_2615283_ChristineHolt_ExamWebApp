@@ -1,6 +1,8 @@
 import React, { useContext, useState } from "react";
 import { UserContext } from "../Context/UserContext";
 import { useNavigate } from "react-router-dom";
+import '../Styles/CreateProfile.css';
+import { EyeInvisibleOutlined, EyeOutlined } from "@ant-design/icons";
 
 //https://stackoverflow.com/questions/68190639/i-want-to-go-though-array-and-check-if-it-matches-with-the-values-or-not-in-reac
 
@@ -10,6 +12,8 @@ function CreateAccountForm() {
     const [passWord, setPassWord] = useState("");
     const [emailAddress, setEmailAddress] = useState("");
     const [confirmation, setConfirmation] = useState();
+    const [passwordVis, setPasswordVis] = useState(false);
+    const [conPasswordVis, setConPasswordVis] = useState(false);
 
     //Create an account messages
     const [usernameConfirm, setUsernameConfirm] = useState(false);
@@ -84,35 +88,47 @@ function CreateAccountForm() {
 
     return (
         <React.Fragment>
-            <form onSubmit={handleSubmit}>
-                <label>
+            <form className="create-account-form" onSubmit={handleSubmit}>
+                <label htmlFor="username">
                     Username:
-                    <input type="text"
-                    placeholder="Choose a Username..." 
-                    onChange={(e) => handleUsername(e.target.value)}/>
                 </label>
+                <input type="text"
+                placeholder="Choose a Username..." 
+                onChange={(e) => handleUsername(e.target.value)} name="username"/>
+                
                 <p>{usernameConfirm ? "" : "Please enter valid username."}</p>
-                <label>
+                <label htmlFor="email">
                     Email Address:
-                    <input type="text"
-                    placeholder="Enter your Email Address..." 
-                    onChange={(e) => handleEmail(e.target.value)} />
                 </label>
+                <input type="text"
+                placeholder="Enter your Email Address..." 
+                onChange={(e) => handleEmail(e.target.value)} name="email"/>                
                 <p>{emailConfirm ? "" : "Please enter valid or not previously used email."}</p>
-                <label>
+                <label htmlFor="password">
                     Password:
-                    <input type="text"
-                    placeholder="Enter a Password..."
-                    onChange={(e) => handlePassword(e.target.value)} />
                 </label>
+                <div className="password-container">
+                    <input type={passwordVis ? "text" : "password"}
+                    placeholder="Enter a Password..."
+                    onChange={(e) => handlePassword(e.target.value)} name="password"/>
+                    <div className="password-visibility" onClick={() =>setPasswordVis(!passwordVis)}>
+                        {passwordVis ? <EyeOutlined /> : <EyeInvisibleOutlined />}
+                    </div>
+                </div>             
                 <p>Password should contain at least 8 characters, 1 number and 1 special character.</p>
                 <p>{passwordConfirm ? "" : "Please enter valid password."}</p>
-                <label>
+                <label htmlFor="confirm-password">
                     Confirm Password:
-                    <input type="text"
-                    placeholder="Confirm your Password..."
-                    onChange={(e) => handleConfirmation(e.target.value)} />
                 </label>
+                <div className="password-container">
+                    <input type={conPasswordVis ? "text" : "password"}
+                    placeholder="Confirm your Password..."
+                    onChange={(e) => handleConfirmation(e.target.value)} name="confirm-password"/>
+                    <div className="password-visibility" onClick={() =>setConPasswordVis(!conPasswordVis)}>
+                        {conPasswordVis ? <EyeOutlined /> : <EyeInvisibleOutlined />}
+                    </div>    
+                </div>
+                            
                 <p>{confirmation ? "" : "Password does not match."}</p>
                 <button type="submit">Create Account</button>
             </form>

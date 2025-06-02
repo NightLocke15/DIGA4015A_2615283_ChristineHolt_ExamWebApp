@@ -1,9 +1,15 @@
 import React, { useContext, useState } from "react";
 import { UserContext } from "../Context/UserContext";
 import { Link, useNavigate } from "react-router-dom";
+import { EyeInvisibleOutlined, EyeOutlined } from "@ant-design/icons";
+import '../Styles/LogIn.css';
+
+//https://ant.design/components/icon
+//https://www.youtube.com/watch?v=p5swH9Xqng8
 
 function LogInForm() {
     const { users, authenticated, login} = useContext(UserContext);
+    const [passwordVis, setPasswordVis] = useState(false);
 
     //User Data
     const [username, setUsername] = useState("");
@@ -31,17 +37,22 @@ function LogInForm() {
 
     return (
         <React.Fragment>
-            <form onSubmit={handleUserInformation}>
+            <form className="login-form" onSubmit={handleUserInformation}>
                 <p>{message}</p>
-                <label>
-                    Username:
-                    <input type="text" onChange={(e) => setUsername(e.target.value)} />
+                <label htmlFor="username">
+                    Username:                    
                 </label>
-                <label>
+                <input className="username-input" type="text" onChange={(e) => setUsername(e.target.value)} name="username" placeholder="Username..." />
+                <label htmlFor="password">
                     Password:
-                    <input type="text" onChange={(e) => setPassword(e.target.value)} />
                 </label>
-                <p><Link to={'/passwordreset'}>Forgot Password?</Link></p>
+                <div className="password-container">
+                    <input className="password-input" type={passwordVis ? "text" : "password"} onChange={(e) => setPassword(e.target.value)} name="password" placeholder="Password..." />
+                    <div className="password-visibility" onClick={() => setPasswordVis(!passwordVis)}>
+                        {passwordVis ? <EyeOutlined /> : <EyeInvisibleOutlined />}
+                    </div>
+                </div>                
+                <p className="forgot-password"><Link to={'/passwordreset'}>Forgot Password?</Link></p>
                 <button type="submit">Log In</button>
             </form>            
         </React.Fragment>

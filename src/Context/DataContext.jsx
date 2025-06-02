@@ -19,6 +19,8 @@ function DataProvider({ children }) {
     const [infoIndexTwo, setInfoIndexTwo] = useState("");
     const [infoURL, setInfoURL] = useState("");
     const [description, setDescription] = useState([]);
+    const [list, setList] = useState([]);
+    const [listURL, setListURL] = useState("");
 
     //For main set of rules
     useEffect(() => {
@@ -120,6 +122,7 @@ function DataProvider({ children }) {
             })
     }, [infoIndexTwo])
 
+    //For tooltips on any specific piece on the screen
     useEffect(() => {
         if (infoURL !== "") {
             fetch(`https://www.dnd5eapi.co${infoURL}`)
@@ -139,9 +142,29 @@ function DataProvider({ children }) {
         }        
     }, [infoURL])
 
+    //For lists in selecting items in character creator
+    useEffect(() => {
+        if (listURL !== "") {
+            fetch(`https://www.dnd5eapi.co${listURL}`)
+            .then(response => {
+                if (!response.ok) {
+                    throw Error("Data could not be fetched.");
+                }
+                return response.json();
+            })
+            .then(data => {
+                setList(data);
+                console.log(data);
+            })
+            .catch(error => {
+                console.log(error.message);
+            })
+        }        
+    }, [listURL])
+
     return (
         <DataContext.Provider value={{ mainSectionData, subSectionData, setRuleIndexOne, setRuleIndexTwo, 
-        setOtherRuleIndexOne, otherRules, setInfoIndexOne, setInfoIndexTwo, information, description, setInfoURL }}>
+        setOtherRuleIndexOne, otherRules, setInfoIndexOne, setInfoIndexTwo, information, description, setInfoURL, setListURL, list }}>
             {children}
         </DataContext.Provider>
     )    

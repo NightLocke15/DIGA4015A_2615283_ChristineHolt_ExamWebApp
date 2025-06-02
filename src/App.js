@@ -1,6 +1,6 @@
 import logo from './logo.svg';
 import './App.css';
-//import './Styles/Misc.css';
+import './Styles/Misc.css';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import UserProvider, { UserContext } from './Context/UserContext';
 import CreateProfile from './Pages/CreateProfile';

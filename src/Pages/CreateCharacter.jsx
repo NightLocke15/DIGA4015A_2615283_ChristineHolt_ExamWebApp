@@ -1,5 +1,5 @@
 import React from "react";
-import DetermineCreator from "../Components/Characters/DetermineCreator";
+import DetermineCreator from "../Components/CharactersCreator/DetermineCreator";
 
 function CreateCharacter() {
     return (
