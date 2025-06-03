@@ -21,6 +21,8 @@ function DataProvider({ children }) {
     const [description, setDescription] = useState([]);
     const [list, setList] = useState([]);
     const [listURL, setListURL] = useState("");
+    const [spellList, setSpellList] = useState([]);
+    const [spellListURL, setSpellListURL] = useState("");
 
     //For main set of rules
     useEffect(() => {
@@ -162,9 +164,30 @@ function DataProvider({ children }) {
         }        
     }, [listURL])
 
+    //For Spell Lists
+    useEffect(() => {
+        if (listURL !== "") {
+            fetch(`https://www.dnd5eapi.co${spellListURL}`)
+            .then(response => {
+                if (!response.ok) {
+                    throw Error("Data could not be fetched.");
+                }
+                return response.json();
+            })
+            .then(data => {
+                setSpellList(data);
+                console.log(data);
+            })
+            .catch(error => {
+                console.log(error.message);
+            })
+        }        
+    }, [spellListURL])
+
     return (
         <DataContext.Provider value={{ mainSectionData, subSectionData, setRuleIndexOne, setRuleIndexTwo, 
-        setOtherRuleIndexOne, otherRules, setInfoIndexOne, setInfoIndexTwo, information, description, setInfoURL, setListURL, list }}>
+        setOtherRuleIndexOne, otherRules, setInfoIndexOne, setInfoIndexTwo, information, description, setInfoURL, setListURL, list,
+        spellList, setSpellList, setSpellListURL }}>
             {children}
         </DataContext.Provider>
     )    

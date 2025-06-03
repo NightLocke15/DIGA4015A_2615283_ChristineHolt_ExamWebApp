@@ -54,13 +54,13 @@ function Class() {
             "name": "Wizard"
         }
     ]
-    const { classComplete, setClassComplete, classPick, setClassPick, setHitDice, setProfChoices, profChoices, setProficiencies, setSavingProficiencies, startingEquipOptions, setStartingEquipment, setStartingEquipOptions, setStartingLevel } = useContext(CharacterContext);
-    const { setInfoIndexOne, setInfoIndexTwo, information, description, setInfoURL, setListURL, list } = useContext(DataContext);
+    const { classComplete, setClassComplete, classPick, setClassPick, setSpellLevelList, setHitDice, setProfChoices, profChoices, setProficiencies, setSavingProficiencies, startingEquipOptions, setStartingEquipment, setStartingEquipOptions, setStartingLevel } = useContext(CharacterContext);
+    const { setInfoIndexOne, setInfoIndexTwo, information, description, setInfoURL, setListURL, setSpellListURL } = useContext(DataContext);
 
     function selectClass(e) {
         setInfoIndexOne("classes/");
         setInfoIndexTwo(e);
-        setClassPick(e);        
+        setClassPick(e);      
     }
 
     function selectProficiency(e) {
@@ -90,6 +90,8 @@ function Class() {
         setProficiencies(information.proficiencies);
         setSavingProficiencies(information.saving_throws);
         setStartingEquipment(information.starting_equipment);
+        setListURL(information.class_levels); 
+        setSpellListURL(information.spells);
         setClassComplete(true);        
     }
 

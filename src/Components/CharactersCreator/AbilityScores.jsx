@@ -37,13 +37,16 @@ function AbilityScores() {
         }
     ]
     const { setInfoIndexOne, setInfoIndexTwo, information, description, setInfoURL } = useContext(DataContext);
-    const { abilityScoreComplete, setAbilityScoreComplete, setAbilityScores, abilityScores } = useContext(CharacterContext);
+    const { abilityScoreComplete, setAbilityScoreComplete, setAbilityScores, abilityScores, setPassivePerception } = useContext(CharacterContext);
     const [rolls, setRolls] = useState([]);
     const [rolled, setRolled] = useState(0);
 
     function complete(e) {
         e.preventDefault();
         if (abilityScores.length === 6) {
+            const wisdomScore = abilityScores.filter((score) => score.name === "Wisdom");
+            console.log(wisdomScore);
+            setPassivePerception(10 + wisdomScore[0].modifier);
             setAbilityScoreComplete(true);
         }        
     }
@@ -62,12 +65,30 @@ function AbilityScores() {
     }
 
     function selectScore(roll, e) {
+        const modifier = 
+            roll === 1 ? -5 : 
+                        roll >= 2 && roll <= 3 ? -4 :
+                        roll >= 4 && roll <= 5 ? -3 : 
+                        roll >= 6 && roll <= 7 ? -2 :
+                        roll >= 8 && roll <= 9 ? -1 :
+                        roll >= 10 && roll <= 11 ? 0 :
+                        roll >= 12 && roll <= 13 ? 1 :
+                        roll >= 14 && roll <= 15 ? 2 :
+                        roll >= 16 && roll <= 17 ? 3 :
+                        roll >= 18 && roll <= 19 ? 4 :
+                        roll >= 20 && roll <= 21 ? 5 :
+                        roll >= 22 && roll <= 23 ? 6 :
+                        roll >= 24 && roll <= 25 ? 7 :
+                        roll >= 26 && roll <= 27 ? 8 :
+                        roll >= 28 && roll <= 29 ? 9 :
+                        10;
         if (abilityScores.some((score) => score.name === e.target.value)) {
             const newScores = abilityScores.map((aScore) => {
                 if (aScore.name === e.target.value) {
                     return {
                         ...aScore,
-                        score: roll
+                        score: roll,
+                        modifier: modifier 
                     };
                 }
                 else {
@@ -75,9 +96,10 @@ function AbilityScores() {
                 }
             })
             setAbilityScores(newScores);
+            console.log(abilityScores)
         }
         else {
-            setAbilityScores([...abilityScores, {name: e.target.value, score: roll}]);
+            setAbilityScores([...abilityScores, {name: e.target.value, score: roll, modifier: modifier}]);
         }
         
         console.log(abilityScores);

@@ -46,7 +46,7 @@ function Race() {
     const alignments = [
         "Lawful Good", "Lawful Neutral", "Lawful Evil", "Neutral Good", "True Neutral", "Neutral Evil", "Chaotic Good", "Chaotic Neutral", "Chaotic Evil"
     ]
-    const { race, setRace, setAbilityScoreInc, setAlignment, setAge, setHeight, setStartProficiencies, setProfOptions, setLanguages, setTraits, raceComplete, setRaceComplete } = useContext(CharacterContext);
+    const { race, setRace, setAbilityScoreInc, setAlignment, setAge, setHeight, setStartProficiencies, setProfOptions, setLanguages, setTraits, raceComplete, setRaceComplete, setSpeed } = useContext(CharacterContext);
     const { setInfoIndexOne, setInfoIndexTwo, information, description, setInfoURL } = useContext(DataContext);
     let toolTip;
 
@@ -66,6 +66,7 @@ function Race() {
         setStartProficiencies(information.starting_proficiencies);
         setLanguages(information.languages)
         setTraits(information.traits);
+        setSpeed(information.speed);
         setRaceComplete(true);
     }
 
