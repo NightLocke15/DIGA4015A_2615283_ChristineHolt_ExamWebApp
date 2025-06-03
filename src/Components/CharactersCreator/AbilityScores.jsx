@@ -43,7 +43,9 @@ function AbilityScores() {
 
     function complete(e) {
         e.preventDefault();
-        setAbilityScoreComplete(true);
+        if (abilityScores.length === 6) {
+            setAbilityScoreComplete(true);
+        }        
     }
 
     function rollDice() {
@@ -54,18 +56,18 @@ function AbilityScores() {
             let roll3 = Math.floor(Math.random() * 6) + 1;
 
             setRolled(rolled + 1);
-            setRolls([...rolls, roll1 + roll2 + roll3]);
+            setRolls([...rolls, { id: rolled, roll: roll1 + roll2 + roll3}]);
         }        
                 
     }
 
-    function selectScore(name, e) {
-        if (abilityScores.some((score) => score.name === name)) {
+    function selectScore(roll, e) {
+        if (abilityScores.some((score) => score.name === e.target.value)) {
             const newScores = abilityScores.map((aScore) => {
-                if (aScore.name === name) {
+                if (aScore.name === e.target.value) {
                     return {
                         ...aScore,
-                        score: e.target.value
+                        score: roll
                     };
                 }
                 else {
@@ -75,7 +77,7 @@ function AbilityScores() {
             setAbilityScores(newScores);
         }
         else {
-            setAbilityScores([...abilityScores, {name: name, score: e.target.value}]);
+            setAbilityScores([...abilityScores, {name: e.target.value, score: roll}]);
         }
         
         console.log(abilityScores);
@@ -92,20 +94,16 @@ function AbilityScores() {
                     <p>Roll 6 times for scores: </p>
                     <button type="button" onClick={rollDice}>Roll Dice</button>
                         {rolls.map((roll, key) => (
-                            <p key={key}>{roll}</p>
-                        ))}
-                    <p>Make sure your list of score match your rolls:</p>
-                    {scores.map((score) => (
-                        <label key={score.id} htmlFor={score.id}>{score.name}
-                            <select name={score.id} defaultValue={null} onChange={(e) => selectScore(score.name, e)}>
-                                <option value={null}>Choose A Score</option>
-                                {rolls.map((roll, key) => (
-                                    <option key={key} value={roll}>{roll}</option>
-                                ))}
-                            </select>
-                        </label>
-                    ))}
-                    
+                            <section>
+                                <p key={key}>{roll.roll}</p>
+                                <select defaultValue={null} onChange={(e) => selectScore(roll.roll, e)}>
+                                    <option value={null}>Choose A Score</option>
+                                    {scores.map((score) => (
+                                        <option key={score.id} value={score.name}>{score.name}</option>
+                                    ))}
+                                </select>                                
+                            </section>
+                        ))}                    
                     <button type="submit">Next</button>             
                 </form>
             )}            

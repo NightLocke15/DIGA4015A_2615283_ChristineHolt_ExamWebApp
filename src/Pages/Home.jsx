@@ -27,7 +27,6 @@ function Home() {
                     <Link to={'/rules'} className="card-holder"><article className="card">
                         <h3>Rules</h3>
                     </article></Link>
-                        <button onClick={logout}>log out</button>
                 </section>
             </React.Fragment>) 
             : 
@@ -45,5 +44,3 @@ function Home() {
 }
 
 export default Home;
-
-///*<button onClick={logout}>log out</button> */ 
