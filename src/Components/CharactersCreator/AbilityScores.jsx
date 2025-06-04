@@ -2,45 +2,57 @@ import React, { useContext, useState } from "react";
 import { DataContext } from "../../Context/DataContext";
 import { CharacterContext } from "../../Context/CharacterContext";
 import Background from "./Background";
+import '../../Styles/CreateCharacter.css';
+import { ThemeContext } from "../../Context/ThemeContext";
 
 function AbilityScores() {
     const scores = [
         {
-        "id": "cha",
+        "id": "CHA",
         "name": "Charisma",
         "url": "/api/2014/ability-scores/cha"
         },
         {
-        "id": "con",
+        "id": "CON",
         "name": "Constitution",
         "url": "/api/2014/ability-scores/con"
         },
         {
-        "id": "dex",
+        "id": "DEX",
         "name": "Dexterity",
         "url": "/api/2014/ability-scores/dex"
         },
         {
-        "id": "int",
+        "id": "INT",
         "name": "Intelligence",
         "url": "/api/2014/ability-scores/int"
         },
         {
-        "id": "str",
+        "id": "STR",
         "name": "Strength",
         "url": "/api/2014/ability-scores/str"
         },
         {
-        "id": "wis",
+        "id": "WIS",
         "name": "Wisdom",
         "url": "/api/2014/ability-scores/wis"
         }
     ]
     const { setInfoIndexOne, setInfoIndexTwo, information, description, setInfoURL } = useContext(DataContext);
-    const { abilityScoreComplete, setAbilityScoreComplete, setAbilityScores, abilityScores, setPassivePerception } = useContext(CharacterContext);
+    const { creator, abilityScoreComplete, setAbilityScoreComplete, setAbilityScores, abilityScores, setPassivePerception } = useContext(CharacterContext);
     const [rolls, setRolls] = useState([]);
     const [rolled, setRolled] = useState(0);
+    const {theme} = useContext(ThemeContext);
+    const [moreInformation, setMoreInformation] = useState("");
+    
+    //For new users information
+    function moreInfo(info) {
+        if (creator === "new") {
+            setMoreInformation(info);
+        }        
+    }
 
+    //taking the user to the next section
     function complete(e) {
         e.preventDefault();
         if (abilityScores.length === 6) {
@@ -51,6 +63,7 @@ function AbilityScores() {
         }        
     }
 
+    //Rolling the dice for user scores
     function rollDice() {
         if(rolled < 6) {
             console.log(rolled);
@@ -61,10 +74,12 @@ function AbilityScores() {
             setRolled(rolled + 1);
             setRolls([...rolls, { id: rolled, roll: roll1 + roll2 + roll3}]);
         }        
+        moreInfo("These are your ability Scores. They help you traverse through the world and interact with it.");
                 
     }
 
-    function selectScore(roll, e) {
+    //Assigning each score to an ability
+    function selectScore(roll, e, id) {
         const modifier = 
             roll === 1 ? -5 : 
                         roll >= 2 && roll <= 3 ? -4 :
@@ -99,33 +114,42 @@ function AbilityScores() {
             console.log(abilityScores)
         }
         else {
-            setAbilityScores([...abilityScores, {name: e.target.value, score: roll, modifier: modifier}]);
+            setAbilityScores([...abilityScores, {id: scores.filter((score) => score.name === e.target.value)[0].id, name: e.target.value, score: roll, modifier: modifier}]);
         }
         
         console.log(abilityScores);
     }
 
-    //https://stackoverflow.com/questions/68474036/i-used-splice-to-remove-an-element-of-an-array-passed-as-a-props-with-indexof-me
+    //
+    //Title: I used splice to remove an element of an array passed as a props with indexOf method to navigate the element and instead it removed all but the first1
+    //Author: Tushar Shahi
+    //Date: 4 June 2025
+    //Availability: https://stackoverflow.com/questions/68474036/i-used-splice-to-remove-an-element-of-an-array-passed-as-a-props-with-indexof-me
     return(
         <section>
             {abilityScoreComplete ? (
                 <Background />
             ) : (
-                <form onSubmit={complete}>
+                <form onSubmit={complete} className={ theme ? "ability-score-light form" : "ability-score form"}>
+                    {creator === "new" ? (
+                    <p  className={theme ? "desc-light" : "desc"}>More Information: {moreInformation}</p>
+                    ) : <p></p>}
                     <h2>Ability Scores</h2>
                     <p>Roll 6 times for scores: </p>
                     <button type="button" onClick={rollDice}>Roll Dice</button>
+                    <section className="rolls">
                         {rolls.map((roll, key) => (
-                            <section>
+                            <article>
                                 <p key={key}>{roll.roll}</p>
                                 <select defaultValue={null} onChange={(e) => selectScore(roll.roll, e)}>
-                                    <option value={null}>Choose A Score</option>
+                                    <option value={null}>Choose</option>
                                     {scores.map((score) => (
                                         <option key={score.id} value={score.name}>{score.name}</option>
                                     ))}
                                 </select>                                
-                            </section>
-                        ))}                    
+                            </article>
+                        ))} 
+                    </section>                   
                     <button type="submit">Next</button>             
                 </form>
             )}            

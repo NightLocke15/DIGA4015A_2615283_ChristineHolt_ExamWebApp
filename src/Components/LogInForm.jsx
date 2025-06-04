@@ -3,13 +3,23 @@ import { UserContext } from "../Context/UserContext";
 import { Link, useNavigate } from "react-router-dom";
 import { EyeInvisibleOutlined, EyeOutlined } from "@ant-design/icons";
 import '../Styles/LogIn.css';
+import { ThemeContext } from "../Context/ThemeContext";
 
-//https://ant.design/components/icon
-//https://www.youtube.com/watch?v=p5swH9Xqng8
+//
+    //Title: Icon
+    //Author: Ant Design
+    //Date: 4 June 2025
+    //Availability: https://ant.design/components/icon
+//
+//Title: How to create a SHOW/HIDE Password TextField in React JS
+    //Author: Koding 101
+    //Date: 4 June 2025
+    //Availability: https://www.youtube.com/watch?v=p5swH9Xqng8
 
 function LogInForm() {
     const { users, authenticated, login} = useContext(UserContext);
     const [passwordVis, setPasswordVis] = useState(false);
+    const {theme} = useContext(ThemeContext);
 
     //User Data
     const [username, setUsername] = useState("");
@@ -42,12 +52,12 @@ function LogInForm() {
                 <label htmlFor="username">
                     Username:                    
                 </label>
-                <input className="username-input" type="text" onChange={(e) => setUsername(e.target.value)} name="username" placeholder="Username..." />
+                <input className={theme ? "username-input-light" : "username-input"} type="text" onChange={(e) => setUsername(e.target.value)} name="username" placeholder="Username..." />
                 <label htmlFor="password">
                     Password:
                 </label>
                 <div className="password-container">
-                    <input className="password-input" type={passwordVis ? "text" : "password"} onChange={(e) => setPassword(e.target.value)} name="password" placeholder="Password..." />
+                    <input className={theme ? "password-input-light" : "password-input"} type={passwordVis ? "text" : "password"} onChange={(e) => setPassword(e.target.value)} name="password" placeholder="Password..." />
                     <div className="password-visibility" onClick={() => setPasswordVis(!passwordVis)}>
                         {passwordVis ? <EyeOutlined /> : <EyeInvisibleOutlined />}
                     </div>

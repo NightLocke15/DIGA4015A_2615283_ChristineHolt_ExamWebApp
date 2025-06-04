@@ -1,10 +1,21 @@
-nav {
+.nav-dark {
     background-color: #363535 ;
     display: flex;
     box-shadow: 0 8px 5px -5px #1f1e1e;
     position: fixed;
     top: 0;
     width: 100%;
+    margin-bottom: 0;
+}
+
+.nav-light {
+    background-color: white ;
+    display: flex;
+    box-shadow: 0 8px 5px -5px #1f1e1e;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    margin-bottom: 0;
 }
 
 .logo {
@@ -45,7 +56,22 @@ nav {
     display: inline-block;
 }
 
+.link-light {
+    text-decoration: none;
+    color: black;
+    margin: 0;
+    flex: 20%;
+    display: inline-block;
+}
+
 .link p {
+    margin: 0;
+    margin-top: 5px;
+    margin-left: 2px;
+    margin-right: 2px;
+}
+
+.link-light p {
     margin: 0;
     margin-top: 5px;
     margin-left: 2px;
@@ -58,11 +84,13 @@ nav {
     font-family: "Sunflower", sans-serif;  
 }
 
-.profile img {
+.avatar {
     display: inline-block;
     margin: 0;
     margin-top: 10px;
     margin-right: 10px;
+    width: 22px;
+    border-radius: 11px;
 }
 
 .profile p {
@@ -70,6 +98,13 @@ nav {
     margin: 0;
     margin-top: 5px;
     margin-right: 10px;
+    cursor: pointer;
+}
+
+.profile p:hover {
+    border: 2px solid #930D0D;
+    border-radius: 10px;
+    padding: 0px 5px;
 }
 
 #thisLocation {    

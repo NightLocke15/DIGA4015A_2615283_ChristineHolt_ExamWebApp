@@ -14,7 +14,9 @@ function RuleContent(props) {
                                     {subSectionData.map((item) => (
                                         <React.Fragment key={item.index}>
                                             <h2>{item.name}</h2>
-                                            <p>{item.desc}</p>
+                                            {item.desc && item.desc.split("# ").map((sect, key) => (
+                                                <p key={key}>{sect}</p>                                                                                               
+                                            ))}
                                         </React.Fragment>                                
                                     ))}
                                 </React.Fragment>

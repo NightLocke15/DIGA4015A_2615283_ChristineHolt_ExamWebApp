@@ -47,6 +47,7 @@
     font-family: "Koulen", sans-serif;
     font-size: 80px;
     margin: 0;
+    margin-top: 5rem;
 }
 
 .card-container {
@@ -68,6 +69,7 @@
     border-radius: 10px;
     margin: 10px;
     background-color: #363535;
+    box-shadow: 0 8px 5px -5px #1f1e1e;
     transition: 0.2s;
 }
 
@@ -81,8 +83,40 @@
     margin-top: 0;
 }
 
+.card img {
+    height: 50vh;
+    width: 35vh;
+    padding-bottom: 5rem;
+}
+
 .create-account {
 
     font-weight: bolder;
     font-size: 20px;
+}
+
+.card-light {
+    border: 2px solid #930D0D;
+    border-radius: 10px;
+    margin: 10px;
+    background-color: white;
+    box-shadow: 0 8px 5px -5px #1f1e1e;
+    transition: 0.2s;
+}
+
+.card-light:hover {
+    transform: scale(1.05);
+}
+
+.card-light h3 {
+    font-family: "Koulen", sans-serif;
+    color: black;
+    font-size: 30px;
+    margin-top: 0;
+}
+
+.card-light img {
+    height: 50vh;
+    width: 35vh;
+    padding-bottom: 5rem;
 }

@@ -17,6 +17,7 @@ import CharacterProvider from './Context/CharacterContext';
 import ForgotPassword from './Pages/ForgotPassword';
 import ThemeProvider from './Context/ThemeContext';
 import Settings from './Pages/Settings';
+import Footer from './Components/Footer';
 
 function App() {
   
@@ -35,8 +36,8 @@ function App() {
                   <Route path='/list' element={<CharacterList />} />
                   <Route path='/sheet' element={<CharacterSheet />} />
                   <Route path='/rules' element={<Rules />} />
-                  <Route path='/about' element={<About />} />
                   <Route path='/login' element={<LogIn />} />
+                  <Route path='/about' element={<About />} />
                   <Route path='/createaccount' element={<CreateProfile />} />
                   <Route path='/passwordreset' element={<ForgotPassword />} />
                   <Route path='/settings' element={<Settings />} />

@@ -1,0 +1,164 @@
+.rules-heading {
+    font-family: "Koulen", sans-serif;
+    font-size: 50px;
+    margin-top: 5rem;
+}
+
+.rule-sections-initial {
+    display: grid;
+    grid-template-columns: auto auto;
+    width: 43%;
+    margin-left: auto;
+    margin-right: auto;
+    align-items: center;
+}
+
+.rule-sections-initial button {
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 0.5rem;
+    width: 25rem;
+    height: 5rem;
+    font-family: "Koulen", sans-serif;
+    font-size: 30px;
+    background-color: #363535 ;
+    box-shadow: 0 8px 5px -5px #1f1e1e;
+    color: white;
+    border: 2px solid #930D0D;
+    border-radius: 10px;
+}
+
+.rule-sections-initial-light {
+    display: grid;
+    grid-template-columns: auto auto;
+    width: 43%;
+    margin-left: auto;
+    margin-right: auto;
+    align-items: center;
+}
+
+.rule-sections-initial-light button {
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 0.5rem;
+    width: 25rem;
+    height: 5rem;
+    font-family: "Koulen", sans-serif;
+    font-size: 30px;
+    background-color: white ;
+    box-shadow: 0 8px 5px -5px #1f1e1e;
+    color: black;
+    border: 2px solid #930D0D;
+    border-radius: 10px;
+}
+
+.rules-container {
+    display: flex;
+    text-align: left;
+}
+
+.rule-sections {
+    flex: 20%;
+    display: flex;
+    flex-direction: column;
+    background-color: black;
+    background: rgba(0,0,0,0.5);
+    margin-top: 0;
+    padding-top: 100px;
+    padding-left: 1rem;
+    padding-right: 1rem;
+}
+
+.section {
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 0.5rem;
+    font-family: "Koulen", sans-serif;
+    font-size: 20px;
+    background-color: #363535 ;
+    box-shadow: 0 8px 5px -5px #1f1e1e;
+    color: white;
+    border: 2px solid #930D0D;
+    border-radius: 10px;
+    width: 100%;
+    transition: 0.2s;
+}
+
+.section:hover {
+    transform: scale(1.1);
+}
+
+.subsection {
+    align-self: flex-end;margin-left: auto;
+    margin-bottom: 0.5rem;
+    font-family: "Koulen", sans-serif;
+    font-size: 20px;
+    background-color: #363535 ;
+    box-shadow: 0 8px 5px -5px #1f1e1e;
+    color: white;
+    border: 2px solid #930D0D;
+    border-radius: 10px;
+    width: 90%;
+    align-self: flex-end;
+    transition: 0.2s;
+}
+
+.subsection:hover {
+    transform: scale(1.1);
+}
+
+.section-light {
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 0.5rem;
+    font-family: "Koulen", sans-serif;
+    font-size: 20px;
+    background-color: white ;
+    box-shadow: 0 8px 5px -5px #1f1e1e;
+    color: black;
+    border: 2px solid #930D0D;
+    border-radius: 10px;
+    width: 100%;
+    transition: 0.2s;
+}
+
+.section-light:hover {
+    transform: scale(1.1);
+}
+
+.subsection-light {
+    align-self: flex-end;margin-left: auto;
+    margin-bottom: 0.5rem;
+    font-family: "Koulen", sans-serif;
+    font-size: 20px;
+    background-color: white ;
+    box-shadow: 0 8px 5px -5px #1f1e1e;
+    color: black;
+    border: 2px solid #930D0D;
+    border-radius: 10px;
+    width: 90%;
+    align-self: flex-end;
+    transition: 0.2s;
+}
+
+.subsection-light:hover {
+    transform: scale(1.1);
+}
+
+.rule-content {
+    flex: 80%;
+    width: 80%;
+    padding: 0rem 5rem;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.rule-content h1 {
+    font-family: "Koulen", sans-serif;
+    font-size: 50px;
+}
+
+.rule-content h2 {
+    font-family: "Koulen", sans-serif;
+    font-size: 30px;
+}

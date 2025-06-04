@@ -1,12 +1,15 @@
 import React, { useContext, useState } from "react";
 import { DataContext } from "../Context/DataContext";
 import RuleContent from "../Components/RuleContent";
+import '../Styles/Rules.css';
+import { ThemeContext } from "../Context/ThemeContext";
+
 
 function Rules() {
     const [clicked, setClicked] = useState(false);
     const [ruleSet, setRuleSet] = useState("");
     const { setRuleIndexOne, setRuleIndexTwo, setOtherRuleIndexOne } = useContext(DataContext);
-    
+    const {theme} = useContext(ThemeContext);
 
     function accessRules(sectionIndex) {
         setClicked(true);
@@ -42,34 +45,37 @@ function Rules() {
 
     return (
         <React.Fragment>
-            <h1>Rules</h1>
+            
             {!clicked ? 
-                (<section>
-                    <button onClick={() => accessRules("adventuring/")}>Adventuring</button>
-                    <button onClick={() => accessRules("combat/")}>Combat</button>
-                    <button onClick={() => accessRules("equipment/")}>Equipment</button>
-                    <button onClick={() => accessRules("spellcasting/")}>Spell Casting</button>
-                    <button onClick={() => accessRules("using-ability-scores/")}>Ability Scores</button>
-                    <button onClick={() => setClicked(true)}>Character</button>
-                    <button>Monsters</button>
-                    <button onClick={() => accessRules("appendix/")}>Appendix</button>
-                </section>) : (
-                    <section>
-                        <aside>
-                            <button onClick={() => accessRules("adventuring/")}>Adventuring</button>
-                            <button onClick={() => accessRules("combat/")}>Combat</button>
-                            <button onClick={() => accessRules("equipment/")}>Equipment</button>
-                            <button onClick={() => accessRules("spellcasting/")}>Spell Casting</button>
-                            <button onClick={() => accessRules("using-ability-scores/")}>Ability Scores</button>
-                            <button>Character</button>
-                                <button onClick={() => accessRaceRules("races/")}>Races</button>
-                                <button onClick={() => accessClassRules("classes/")}>Classes</button>
-                                <button onClick={() => accessBackgroundRules("backgrounds/")}>Personality & Background</button>
-                                <button onClick={() => accessFeaturesRules("features/")}>Features</button>
-                                <button onClick={() => accessSpellsRules("spells/")}>Spells</button>
-                            <button onClick={() => accessRules("appendix/")}>Appendix</button>
+                (
+                <React.Fragment>
+                    <h1 className="rules-heading">Rules</h1>
+                    <section className={theme ? "rule-sections-initial-light":"rule-sections-initial"}>
+                        <button onClick={() => accessRules("adventuring/")}>Adventuring</button>
+                        <button onClick={() => accessRules("combat/")}>Combat</button>
+                        <button onClick={() => accessRules("equipment/")}>Equipment</button>
+                        <button onClick={() => accessRules("spellcasting/")}>Spell Casting</button>
+                        <button onClick={() => accessRules("using-ability-scores/")}>Ability Scores</button>
+                        <button onClick={() => setClicked(true)}>Character</button>
+                        <button onClick={() => accessRules("appendix/")}>Appendix</button>
+                    </section>
+                </React.Fragment>) : (
+                    <section className="rules-container">
+                        <aside className="rule-sections">
+                            <button className={theme? "section-light":"section"} onClick={() => accessRules("adventuring/")}>Adventuring</button>
+                            <button className={theme? "section-light":"section"} onClick={() => accessRules("combat/")}>Combat</button>
+                            <button className={theme? "section-light":"section"} onClick={() => accessRules("equipment/")}>Equipment</button>
+                            <button className={theme? "section-light":"section"} onClick={() => accessRules("spellcasting/")}>Spell Casting</button>
+                            <button className={theme? "section-light":"section"} onClick={() => accessRules("using-ability-scores/")}>Ability Scores</button>
+                            <button className={theme? "section-light":"section"} >Character</button>
+                                <button className={theme? "subsection-light":"subsection"} onClick={() => accessRaceRules("races/")}>Races</button>
+                                <button className={theme? "subsection-light":"subsection"} onClick={() => accessClassRules("classes/")}>Classes</button>
+                                <button className={theme? "subsection-light":"subsection"} onClick={() => accessBackgroundRules("backgrounds/")}>Personality & Background</button>
+                                <button className={theme? "subsection-light":"subsection"} onClick={() => accessFeaturesRules("features/")}>Features</button>
+                                <button className={theme? "subsection-light":"subsection"} onClick={() => accessSpellsRules("spells/")}>Spells</button>
+                            <button className={theme? "section-light":"section"} onClick={() => accessRules("appendix/")}>Appendix</button>
                         </aside>
-                        <article>
+                        <article className="rule-content">
                             <RuleContent rules={ruleSet} />
                         </article>
                     </section>

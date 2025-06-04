@@ -1,0 +1,72 @@
+.character-list {
+    display: grid;
+    grid-template-columns: auto auto;
+    width: 43%;
+    margin-left: auto;
+    margin-right: auto;
+    align-items: center;
+}
+
+.character-list-Item {
+    text-align: left;
+    background-color: #363535;
+    border: 2px solid #930D0D;
+    border-radius: 10px;
+    width: 20rem;
+    padding-left: 2rem;
+    margin: 1rem;
+    box-shadow: 0 8px 5px -5px #1f1e1e;
+    transition: 0.2s;
+}
+
+.character-list-Item-light {
+    text-align: left;
+    background-color: white;
+    border: 2px solid #930D0D;
+    border-radius: 10px;
+    width: 20rem;
+    padding-left: 2rem;
+    margin: 1rem;
+    box-shadow: 0 8px 5px -5px #1f1e1e;
+    transition: 0.2s;
+}
+
+.character-list-Item:hover {
+    transform: scale(1.1);
+}
+
+.character-name {
+    font-family: "Koulen", sans-serif;
+    font-size: 30px;
+    margin: 0;
+}
+
+.search-bar {
+    width: 20rem;
+    background-color: #363535;
+    border: 2px solid #930D0D;
+    border-radius: 10px;
+    height: 2rem;
+    padding-left: 10px;
+    color: white;
+    font-family: "Sunflower", sans-serif;
+    box-shadow: 0 8px 5px -5px #1f1e1e;
+    transition: 0.2s;
+}
+
+.search-bar-light {
+    width: 20rem;
+    background-color: white;
+    border: 2px solid #930D0D;
+    border-radius: 10px;
+    height: 2rem;
+    padding-left: 10px;
+    color: black;
+    font-family: "Sunflower", sans-serif;
+    box-shadow: 0 8px 5px -5px #1f1e1e;
+    transition: 0.2s;
+}
+
+.search-bar:active {
+    transform: scale(1.1);
+}

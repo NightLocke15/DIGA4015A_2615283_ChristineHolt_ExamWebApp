@@ -35,7 +35,6 @@ function DataProvider({ children }) {
             })
             .then(data => {
                 setMainSectionData(data);
-                console.log(data);
             })
             .catch(error => {
                 console.log(error.message);
@@ -77,7 +76,6 @@ function DataProvider({ children }) {
             })
             .then(data => {
                 setOtherRuleSection(data);
-                console.log(data);
             })
             .catch(error => {
                 console.log(error.message);
@@ -117,7 +115,6 @@ function DataProvider({ children }) {
             })
             .then(data => {
                 setInformation(data);
-                console.log(data);
             })
             .catch(error => {
                 console.log(error.message);
@@ -136,7 +133,6 @@ function DataProvider({ children }) {
             })
             .then(data => {
                 setDescription(data);
-                console.log(data);
             })
             .catch(error => {
                 console.log(error.message);
@@ -156,7 +152,6 @@ function DataProvider({ children }) {
             })
             .then(data => {
                 setList(data);
-                console.log(data);
             })
             .catch(error => {
                 console.log(error.message);
@@ -176,7 +171,6 @@ function DataProvider({ children }) {
             })
             .then(data => {
                 setSpellList(data);
-                console.log(data);
             })
             .catch(error => {
                 console.log(error.message);

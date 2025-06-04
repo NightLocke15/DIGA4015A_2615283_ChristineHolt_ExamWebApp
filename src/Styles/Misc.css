@@ -1,10 +1,20 @@
-body {
+.dark {
   background-image: url("../Styles/Images/DarkBackground.png");
   background-repeat: no-repeat;
   background-position: right top;
   background-attachment: fixed;
-  color: white; 
-  margin-top: 5rem;
+  color: white;
   font-family: "Sunflower", sans-serif;
+  margin-top: 0;
+}
+
+.light {
+  background-image: url("../Styles/Images/LightBackground.png");
+  background-repeat: no-repeat;
+  background-position: right top;
+  background-attachment: fixed;
+  color: black;
+  font-family: "Sunflower", sans-serif;
+  margin-top: 0;
 }
 
