@@ -127,15 +127,15 @@ The Sitemap for each of the pages and the information contained within them:
 
 Flow that the user could follow when using the web application:
 
-![Web App Sitemap](/src/READMECONTENT/userflowP1.png)
-![Web App Sitemap](/src/READMECONTENT/userflowP2.png)
+![User Flow](/src/READMECONTENT/userflowP1.png)
+![User Flow](/src/READMECONTENT/userflowP2.png)
 
 ## Wireframes:
 
 Wireframes of all the pages in the application on desktop. 
 
-![Web App Sitemap](/src/READMECONTENT/homeBeforeLogD.png)
-![Web App Sitemap](/src/READMECONTENT/homeBeforeLogL.png)
+![Home Before Login Dark](/src/READMECONTENT/homeBeforeLogD.png)
+![Home Before Login Light](/src/READMECONTENT/homeBeforeLogL.png)
 
 1. **Website Logo:**
 This is the logo for the website. It will be visible on all the pages in the header. When
